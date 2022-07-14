@@ -8,6 +8,7 @@
     border: 1px solid #FF6B72;
     border-radius: 10px;
     cursor: pointer;
+    margin: auto;
   }
   
   .dsmeta-red-btn img {
