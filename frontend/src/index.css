@@ -1,70 +1,162 @@
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
+  box-sizing: border-box;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
+  padding: 0;
+}
+
+body, html {
+  color: #fff;
+  background-color: #000;
+}
+
+a, a:hover, a:visited {
+  color: unset;
+  text-decoration: none;
+}
+
+header {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  background: linear-gradient(180deg, #102347 0%, #181818 100%)
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.dsmeta-header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.dsmeta-header-container img {
+  width: 235px;
+}
+
+.dsmeta-header-container h1 {
+  font-size: 25px;
+  margin-top: 15px;
+}
+
+.dsmeta-header-container p {
+  font-weight: 300;
+}
+
+.dsmeta-card {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 900px;
+  background-color: #283142;
+  border-radius: 10px;
+  padding: 30px 10px;
+  
+}
+
+.dsmeta-form-control-container {
+  margin-bottom: 16px;
+  max-width: 300px;
+}
+
+#sales {
+  padding: 40px 10px;
+}
+
+.dsmeta-sales-tittle {
+  color: #676FFF;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.dsmeta-input {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #384459;
+  color: #9AAABE;
+  background-color: #1B2531;
+  border-radius: 5px;
+  padding: 0 20px;
+  font-size: 18px;
+}
+
+.dsmeta-sales-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dsmeta-sales-table th {
+  align-items: flex-start;
+}
+
+.dsmeta-sales-table thead {
+  font-weight: 100 !important;
+  height: 55px;
+  color: #E9E9E9;
+}
+
+.dsmeta-sales-table tbody {
+  font-size: 14px;
+  font-weight: 400;
+  color: #CFCFCF;
+  text-align: center;
+}
+
+.dsmeta-sales-table tbody tr {
+  height: 74px;
+  border-top: 1px solid #5F6E82;
+}
+
+.dsmeta-sales-table tbody tr:hover > td {
+  background-color: #384459;
+}
+
+.dsmeta-sales-table tbody tr:nth-child(odd) {
+  background-color: #242C3B;
+}
+
+.dsmeta-red-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dsmeta-red-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  width: 45px;
+  background: rgba(255, 107, 114, 0.1);
+  border: 1px solid #FF6B72;
+  border-radius: 10px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.dsmeta-red-btn img {
+  width: 19px;
+}
+
+.show576 {
+  display: none;
+}
+
+.show992 {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .show576 {
+      display: table-cell;
   }
-  a:hover {
-    color: #747bff;
+}
+
+@media (min-width: 992px) {
+
+  .dsmeta-card {
+      padding: 35px;
+      font-size: 16px;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .show992 {
+      display: table-cell;
   }
 }
