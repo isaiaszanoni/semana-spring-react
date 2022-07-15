@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Sale } from "../../models/sale";
+import { BASE_URL } from "../../utils/request";
 
 import NotificationButton from '../NotificationButton';
 import './style.css';
@@ -14,10 +16,13 @@ function SalesCard() {
     const [minDate, setMinDate] = useState(min);
     const [maxDate, setMaxDate] = useState(max);
 
+    // use state para armazenar uma lista do nosso objeto Sale
+    const [sales, setSales] = useState<Sale[]>([]);
+
     useEffect(() => {
-        axios.get("https://dsmeta-spring-react.herokuapp.com/sales")
+        axios.get(`${BASE_URL}/sales`)
             .then(response => {
-                console.log(response.data);
+                setSales(response.data.content);
             })
     }, []);
 
@@ -59,39 +64,24 @@ function SalesCard() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td className="show992">#346</td>
-                                        <td className="show576">08/07/2022</td>
-                                        <td>Anakin</td>
-                                        <td className="show992">15</td>
-                                        <td className="show992">11</td>
-                                        <td>R$5530.00</td>
-                                        <td>
-                                               <NotificationButton />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="show992">#121</td>
-                                        <td className="show576">08/07/2022</td>
-                                        <td>Luke</td>
-                                        <td className="show992">10</td>
-                                        <td className="show992">08</td>
-                                        <td>R$3900.00</td>
-                                        <td>
+                                    {sales.map(sale => {
+                                        return (
+                                            <tr key={sale.id}>
+                                                <td className="show992">{sale.id}</td>
+                                                <td className="show576">{new Date(sale.date).toLocaleDateString()}</td>
+                                                <td>{sale.sellerName}</td>
+                                                <td className="show992">{sale.visited}</td>
+                                                <td className="show992">{sale.deals}</td>
+                                                <td>{sale.amount.toFixed(2)}</td>
+                                                <td>
                                                     <NotificationButton />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="show992">#298</td>
-                                        <td className="show576">08/07/2022</td>
-                                        <td>Padme</td>
-                                        <td className="show992">15</td>
-                                        <td className="show992">10</td>
-                                        <td>R$5685.00</td>
-                                        <td>
-                                                <NotificationButton />
-                                        </td>
-                                    </tr>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                        
+                                    }
+                                    
                                 </tbody>
                             </table>
                         </div>
